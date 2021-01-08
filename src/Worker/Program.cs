@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.EventLog;
 
 namespace IV.PCM.Worker
 {
@@ -7,14 +10,20 @@ namespace IV.PCM.Worker
 	{
 		public static void Main(string[] args)
 		{
-			CreateHostBuilder(args).Build().Run();
+			CreateHostBuilder(args)
+				.Build()
+				.Run();
 		}
 
-		public static IHostBuilder CreateHostBuilder(string[] args)
+		private static IHostBuilder CreateHostBuilder(string[] args)
 		{
 			return Host
 				.CreateDefaultBuilder(args)
-				.ConfigureServices((hostContext, services) => { services.AddHostedService<Worker>(); });
+				// TODO: Implement custom source for event log
+				.ConfigureLogging(loggingBuilder => loggingBuilder.AddEventLog())
+				.ConfigureWebHostDefaults(whb => whb.UseStartup<Startup>())
+				.ConfigureServices((hostContext, services) => { services.AddHostedService<Worker>(); })
+				.UseWindowsService();
 		}
 	}
 }
