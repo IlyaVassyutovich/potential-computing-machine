@@ -1,8 +1,8 @@
-$private:Password = ConvertTo-SecureString -String "qwerty" -AsPlainText -Force
+$private:Password = ConvertTo-SecureString -String "Irrelevant" -AsPlainText -Force
 $private:ServiceAccount = New-Object -TypeName System.Management.Automation.PSCredential `
-    -ArgumentList "HYPERION\PCM-Service", $Password
+    -ArgumentList "NT AUTHORITY\SYSTEM", $Password
 
-$private:PublishDestination = "c:\ProgramData\potential-computing-machine\"
+$private:PublishDestination = "c:\Program Files\potential-computing-machine\"
 
 $global:PublishParameters = @{
     ServiceAccount = $ServiceAccount;
