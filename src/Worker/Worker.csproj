@@ -6,6 +6,7 @@
     <AssemblyName>IV.PotentialComputingMachine</AssemblyName>
     <RootNamespace>IV.PCM.Worker</RootNamespace>
     <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
