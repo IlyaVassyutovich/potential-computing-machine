@@ -27,7 +27,7 @@ if ($null -ne $ExistingService) {
 }
 
 Write-Debug "Clearing publish destination"
-Get-ChildItem $PublishDestination -Recurse | Remove-Item -Force -Recurse
+Get-ChildItem $PublishDestination -Exclude "logs" | Remove-Item -Force -Recurse
 
 Write-Debug "Publishing new service"
 $WorkerSource = Join-Path $PSScriptRoot "..\src\Worker\Worker.csproj"
