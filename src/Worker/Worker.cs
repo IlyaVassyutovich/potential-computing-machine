@@ -6,22 +6,23 @@ using Microsoft.Extensions.Logging;
 
 namespace IV.PCM.Worker
 {
-    public class Worker : BackgroundService
-    {
-        private readonly ILogger<Worker> _logger;
+	public class Worker : BackgroundService
+	{
+		private readonly ILogger<Worker> logger;
 
-        public Worker(ILogger<Worker> logger)
-        {
-            _logger = logger;
-        }
+		public Worker(ILogger<Worker> logger)
+		{
+			this.logger = logger;
+		}
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-        {
-            while (!stoppingToken.IsCancellationRequested)
-            {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                await Task.Delay(TimeSpan.FromMinutes(3), stoppingToken);
-            }
-        }
-    }
+		protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+		{
+			logger.LogDebug($"Worker started at {DateTimeOffset.Now}.");
+
+			while (!stoppingToken.IsCancellationRequested)
+				await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
+
+			logger.LogDebug($"Worker stopping at {DateTimeOffset.Now}.");
+		}
+	}
 }
