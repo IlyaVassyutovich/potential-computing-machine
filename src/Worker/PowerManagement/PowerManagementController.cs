@@ -19,6 +19,8 @@ namespace IV.PCM.PowerManagement
 		public async Task<IActionResult> Suspend()
 		{
 			await powerManagementService.Suspend();
+			// TODO: Implement some default response
+			// TODO: Implement exception handling middleware
 			return Ok();
 		}
 	}

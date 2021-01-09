@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using IV.PCM.PowerManagement;
+using IV.PCM.OSProcesses;
 
 namespace IV.PCM.Worker
 {
@@ -21,9 +22,12 @@ namespace IV.PCM.Worker
 		[UsedImplicitly]
 		public static void ConfigureServices(IServiceCollection services)
 		{
-			services.AddControllers();
+			services
+				.AddControllers()
+				.AddControllersAsServices();
 
 			services.AddTransient<IPowerManagementService, PowerManagementService>();
+			services.AddTransient<IProcessRunner, ProcessRunner>();
 		}
 
 		[UsedImplicitly]
