@@ -16,12 +16,11 @@ namespace IV.PCM.PowerManagement
 
 		[HttpGet]
 		[Route("suspend")]
-		public async Task<IActionResult> Suspend()
+		public async Task<JsonResult> Suspend()
 		{
 			await powerManagementService.Suspend();
-			// TODO: Implement some default response
 			// TODO: Implement exception handling middleware
-			return Ok();
+			return new JsonResult(new { Success = true });
 		}
 	}
 }
