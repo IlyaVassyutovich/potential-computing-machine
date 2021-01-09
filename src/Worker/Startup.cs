@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using IV.PCM.PowerManagement;
+
 namespace IV.PCM.Worker
 {
 	public class Startup
