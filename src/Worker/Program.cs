@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -6,6 +7,7 @@ using Microsoft.Extensions.Logging.EventLog;
 
 namespace IV.PCM.Worker
 {
+	[UsedImplicitly]
 	public class Program
 	{
 		public static void Main(string[] args)
